@@ -1,0 +1,88 @@
+EEEEE
+======================================================================
+ERROR: test_client_get_all (test_client.TestClient.test_client_get_all)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1369, in patched
+    return func(*newargs, **newkeywargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\test_client.py", line 127, in test_client_get_all
+    rsp = self.client.get("*")
+          ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\client.py", line 15, in get
+    connect = create_connection((self.host, self.port), 1)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 833, in create_connection
+    sock.settimeout(timeout)
+TypeError: 'NoneType' object is not callable
+
+======================================================================
+ERROR: test_client_get_client_error (test_client.TestClient.test_client_get_client_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1369, in patched
+    return func(*newargs, **newkeywargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\test_client.py", line 153, in test_client_get_client_error
+    self.assertRaises(ClientError,
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\unittest\case.py", line 766, in assertRaises
+    return context.handle('assertRaises', args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\unittest\case.py", line 222, in handle
+    raise TypeError('%s() arg 1 must be %s' %
+TypeError: assertRaises() arg 1 must be an exception type or tuple of exception types
+
+======================================================================
+ERROR: test_client_get_key (test_client.TestClient.test_client_get_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1369, in patched
+    return func(*newargs, **newkeywargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\test_client.py", line 113, in test_client_get_key
+    rsp = self.client.get("test")
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\client.py", line 15, in get
+    connect = create_connection((self.host, self.port), 1)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 833, in create_connection
+    sock.settimeout(timeout)
+TypeError: 'NoneType' object is not callable
+
+======================================================================
+ERROR: test_client_get_not_exists (test_client.TestClient.test_client_get_not_exists)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1369, in patched
+    return func(*newargs, **newkeywargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\test_client.py", line 142, in test_client_get_not_exists
+    rsp = self.client.get("key_not_exists")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\client.py", line 15, in get
+    connect = create_connection((self.host, self.port), 1)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 833, in create_connection
+    sock.settimeout(timeout)
+TypeError: 'NoneType' object is not callable
+
+======================================================================
+ERROR: test_client_put (test_client.TestClient.test_client_put)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1369, in patched
+    return func(*newargs, **newkeywargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\!грш\внит\test_client.py", line 103, in test_client_put
+    self.client.put(metric, value, timestamp)
+  File "D:\Documents\!грш\внит\client.py", line 10, in put
+    connect = create_connection((self.host, self.port), 1)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\userrr\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 833, in create_connection
+    sock.settimeout(timeout)
+TypeError: 'NoneType' object is not callable
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.008s
+
+FAILED (errors=5)
