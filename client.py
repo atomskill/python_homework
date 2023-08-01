@@ -1,4 +1,4 @@
-from socket import create_connection
+import socket
 
 class Client():
     def __init__(self, host, port, timeout = None):
@@ -7,12 +7,12 @@ class Client():
         self.timeout = timeout
     
     def put(self, key, value, timestamp):
-        connect = create_connection((self.host, self.port), 1)
+        connect = socket.create_connection((self.host, self.port), self.timeout)
         connect.sendall( f"put {key} {value} {timestamp}\n".encode('utf-8'))
         return connect.recv(1024)
     
     def get(self, key):
-        connect = create_connection((self.host, self.port), 1)
+        connect = socket.create_connection((self.host, self.port), self.timeout)
         connect.sendall(f"get {key}\n".encode('utf-8'))
         return connect.recv(1024)
 
