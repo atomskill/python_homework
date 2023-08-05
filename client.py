@@ -1,4 +1,5 @@
 import socket
+import time
 
 class Client():
     def __init__(self, host, port, timeout = None):
@@ -6,10 +7,12 @@ class Client():
         self.port = port
         self.timeout = timeout
     
-    def put(self, key, value, timestamp):
+    def put(self, key, value, timestamp = int(time.time())):
         connect = socket.create_connection((self.host, self.port), self.timeout)
         connect.sendall( f"put {key} {value} {timestamp}\n".encode('utf-8'))
-        return connect.recv(1024)
+        answer = connect.recv(1024)
+        if answer.decode().split('\n')[0] != 'ok':
+            raise ClientError("Bad Request")
     
     def get(self, key):
         connect = socket.create_connection((self.host, self.port), self.timeout)
@@ -29,6 +32,8 @@ class Client():
                 metrics[key] = [(value, timestamp)]
             else:
                 metrics[key].append((value, timestamp))
+        for key in metrics:
+            metrics[key] = sorted(metrics[key], key=lambda x: x[1], reverse=True)
         return metrics
 
 class ClientError(Exception):
