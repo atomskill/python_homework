@@ -10,14 +10,14 @@ class Client():
     def put(self, key, value, timestamp = int(time.time())):
         with socket.create_connection((self.host, self.port), self.timeout) as connect:
             connect.sendall( f"put {key} {value} {timestamp}\n".encode('utf-8'))
-        answer = connect.recv(1024)
+            answer = connect.recv(1024)
         if answer.decode().split('\n')[0] != 'ok':
             raise ClientError("Bad Request")
     
     def get(self, key):
         with socket.create_connection((self.host, self.port), self.timeout) as connect:
             connect.sendall(f"get {key}\n".encode('utf-8'))
-        answer = connect.recv(1024).decode()
+            answer = connect.recv(1024).decode()
         ansObjs = answer.split('\n')
         if ansObjs[0] != 'ok':
             raise ClientError("Bad Request")
