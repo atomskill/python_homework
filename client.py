@@ -8,15 +8,15 @@ class Client():
         self.timeout = timeout
     
     def put(self, key, value, timestamp = int(time.time())):
-        connect = socket.create_connection((self.host, self.port), self.timeout)
-        connect.sendall( f"put {key} {value} {timestamp}\n".encode('utf-8'))
+        with socket.create_connection((self.host, self.port), self.timeout) as connect:
+            connect.sendall( f"put {key} {value} {timestamp}\n".encode('utf-8'))
         answer = connect.recv(1024)
         if answer.decode().split('\n')[0] != 'ok':
             raise ClientError("Bad Request")
     
     def get(self, key):
-        connect = socket.create_connection((self.host, self.port), self.timeout)
-        connect.sendall(f"get {key}\n".encode('utf-8'))
+        with socket.create_connection((self.host, self.port), self.timeout) as connect:
+            connect.sendall(f"get {key}\n".encode('utf-8'))
         answer = connect.recv(1024).decode()
         ansObjs = answer.split('\n')
         if ansObjs[0] != 'ok':
