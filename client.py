@@ -17,7 +17,7 @@ class Client():
         self.server = (host, port)
         self.timeout = timeout
     
-    def put(self, key: str, value: float, timestamp: Optional[int]) -> None:
+    def put(self, key: str, value: float, timestamp: Optional[int] = None) -> None:
         """ Метод put отправляет на сервер имя клиента и его параметр через точку, 
             значение параметра и время, когда были полученны данные
             
