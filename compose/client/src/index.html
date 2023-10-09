@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Орлёнок - смена 2023</title>
+    </head>
+    <body>
+      <div>
+        <button onclick="foo()">CLICK</button>
+      </div>
+
+      <script>
+        async function foo() {
+          let response = await fetch('http://localhost:8001');
+
+          let result = await response.json();
+          alert(result.text);
+        }
+
+      </script>
+
+    </body>
+</html>
